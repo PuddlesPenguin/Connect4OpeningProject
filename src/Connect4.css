@@ -1,0 +1,87 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.connect4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+h1 {
+  font-size: 4vmin;
+  margin-bottom: 2vmin;
+}
+
+.board {
+  background-color: #0066cc;
+  padding: 1vmin;
+  border-radius: 2vmin;
+  box-shadow: 0 0 2vmin rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  width: 10vmin;
+  height: 10vmin;
+  background-color: white;
+  border-radius: 50%;
+  margin: 0.5vmin;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.piece {
+  width: 8vmin;
+  height: 8vmin;
+  border-radius: 50%;
+}
+
+.player1 {
+  background-color: #ff4136;
+}
+
+.player2 {
+  background-color: #ffdc00;
+}
+
+.game-over {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 2vmin;
+  border-radius: 2vmin;
+  text-align: center;
+}
+
+.reset-button {
+  margin-top: 2vmin;
+  padding: 1vmin 2vmin;
+  font-size: 2vmin;
+  background-color: #2ecc40;
+  color: white;
+  border: none;
+  border-radius: 1vmin;
+  cursor: pointer;
+}
+
+.reset-button:hover {
+  background-color: #3d9970;
+}
