@@ -17,19 +17,19 @@ function FrontPage() {
           title="Add Openings"
           text="Add connect 4 openings to your database!"
           image={addOpeningLogo}
-          link={<Link to="/add-openings">Go to Add Openings</Link>}
+          link="/add-openings"
         />
         <Card
           title="Train Openings"
           text="Train from connect 4 openings in your database!"
           image={trainOpeningLogo}
-          link={<Link to="/train-openings">Go to Train Openings</Link>}
+          link="/train-openings"
         />
         <Card
           title="Play Bot"
           text="Test yourself against a perfect connect 4 bot!"
           image={playBotLogo}
-          link={<Link to="/play-bot">Go to Play Bot</Link>}
+          link="/play-bot"
         />
       </div>
     </>
