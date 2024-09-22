@@ -1,68 +1,64 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: #aaffff;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.header {
+  background-color: #009999d1; /* Teal background */
+  color: #88ffff; /* Light Blue text */
+  padding: 15px; /* Some padding */
+  text-align: center; /* Centered text */
+  box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);
+  border: 1px solid hsl(0, 0%, 80%);
+
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.header h1 {
+  margin: 0; /* Remove default margin */
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.header nav {
+  margin-top: 10px;
+}
+
+.header nav a {
+  color: white; /* White links */
+  margin: 0 15px; /* Spacing between links */
+  text-decoration: none; /* Remove underline */
+}
+
+.header nav a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+.card {
+  border: 1px solid hsl(0, 0%, 80%);
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+  max-width: 250px;
+  height: 180px;
+  display: inline-block;
+  background-color: rgba(6, 53, 53, 0.114);
+}
+
+.card .card-image {
+  width: 100px; /* Fixed width */
+  height: 100px; /* Fixed height */
+  border-radius: 50%; /* Make it circular */
+  object-fit: cover; /* Ensure the image fills the space */
+  margin-bottom: 10px;
+}
+
+.card .card-title {
+  margin: 0; /* Remove default margin */
+  color: hsla(186, 30%, 27%, 0.852);
+}
+
+.card .card-text {
+  margin: 0; /* Remove default margin */
+  color: hsla(186, 30%, 27%, 0.852);
 }
