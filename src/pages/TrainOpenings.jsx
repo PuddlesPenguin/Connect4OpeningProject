@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './../Connect4.css';
-import './../components/DropDown';
 import BasicExample from './../components/DropDown';
-
+import Navbar from './../components/NavBar';
 const openingsJSON = `[
-    "2456",
-    "1357",
-    "4567",
-    "2345",
-    "1234"
+    "2123456",
+    "232414",
+    "4564117",
+    "233445",
+    "1231134"
 ]`;
 
 const decodeOpenings = (json) => {
@@ -127,10 +126,21 @@ const TrainOpenings = () => {
     };
 
     return (
-        <div className="connect4">
-            <BasicExample/>
+        <>
+        <header className="header">
+            <h1>Train Openings</h1>
+        </header>
+        <Navbar
+         link1="/" 
+         text1="Home" 
+         link2="/add-openings" 
+         text2="Add Openings" 
+         link3="/play-bot" 
+         text3="PlayBot" 
+      />
 
-            <h1>Connect 4</h1>
+    <div className="connect4">
+        
             <div className="board">
                 {board.map((row, rowIndex) => (
                     <div key={rowIndex} className="row">
@@ -160,6 +170,7 @@ const TrainOpenings = () => {
                 </div>
             )}
         </div>
+        </>
     );
 };
 

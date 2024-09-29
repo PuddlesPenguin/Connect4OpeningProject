@@ -1,35 +1,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #8ed2d2;
-}
-
-.header {
-  background-color: #009999d1; /* Teal background */
-  color: #88ffff; /* Light Blue text */
-  padding: 15px; /* Some padding */
-  text-align: center; /* Centered text */
-  box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);
-  border: 1px solid hsl(0, 0%, 80%);
-
-}
-
-.header h1 {
-  margin: 0; /* Remove default margin */
-}
-
-.header nav {
-  margin-top: 10px;
-}
-
-.header nav a {
-  color: white; /* White links */
-  margin: 0 15px; /* Spacing between links */
-  text-decoration: none; /* Remove underline */
-}
-
-.header nav a:hover {
-  text-decoration: underline; /* Underline on hover */
+  background: #c6e2e2;
 }
 
 .card-container {
@@ -89,3 +61,52 @@ body {
   overflow-y: auto;
 
 }
+.header {
+  background-color: #009999d1; /* Teal background */
+  color: #88ffff; /* Light Blue text */
+  padding: 15px; /* Increased padding for spaciousness */
+  text-align: center; /* Centered text */
+  box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);
+  border: 1px solid hsl(0, 0%, 80%);
+  border-radius: 3px; /* Softened corners */
+}
+
+.header h1 {
+  margin: 0; /* Remove default margin */
+  font-size: 2rem; /* Increased font size */
+  font-weight: bold; /* Bold text */
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #6cbcbc; /* Keep this color */
+  color: #bfe4e4;
+  padding: 5px; /* Adjusted padding */
+  border: 1px solid hsl(0, 0%, 80%);;
+  border-radius: 4px; /* Softened corners */
+}
+
+.nav-links {
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin: 0 1rem; /* Updated margin for better spacing */
+}
+
+.nav-links a {
+  font-weight: bold; /* Bold text */
+  color: #196b6b; /* Link color */
+  text-decoration: none;
+  transition: color 0.3s; /* Smooth transition for hover */
+}
+
+.nav-links a:hover {
+  color: #0f9696; /* Hover color */
+}
+
