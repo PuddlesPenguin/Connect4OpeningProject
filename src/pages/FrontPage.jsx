@@ -5,6 +5,7 @@ import addOpeningLogo from './../assets/treelogo.png';
 import trainOpeningLogo from './../assets/practice.jpg';
 import playBotLogo from './../assets/bot.jpg';
 import { Link } from 'react-router-dom';
+import Connect4 from './../Connect4.jsx'
 
 function FrontPage() {
   return (
@@ -31,6 +32,7 @@ function FrontPage() {
           image={playBotLogo}
           link="/play-bot"
         />
+        
       </div>
     </>
   );
