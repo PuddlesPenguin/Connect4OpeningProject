@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './../Connect4.css';
+import './../components/DropDown';
+import BasicExample from './../components/DropDown';
 
 const openingsJSON = `[
     "2456",
@@ -30,6 +32,7 @@ const TrainOpenings = () => {
     const [winner, setWinner] = useState(null);
     const [gameOver, setGameOver] = useState(false);
     const [moveCounter, setMoveCounter] = useState(0); // Start at 0
+    const [jsonArray, setJsonArray] = useState([]);
 
     useEffect(() => {
         const playInitialMoves = async () => {
@@ -100,6 +103,7 @@ const TrainOpenings = () => {
                 newBoard[row][col] = currentPlayer;
                 setBoard(newBoard);
                 setMoveCounter(prevCount => prevCount + 1);
+                setJsonArray(prevJsonArray => [...prevJsonArray, col + 1]);
 
                 if (checkWinner(row, col)) {
                     setWinner(currentPlayer);
@@ -124,6 +128,8 @@ const TrainOpenings = () => {
 
     return (
         <div className="connect4">
+            <BasicExample/>
+
             <h1>Connect 4</h1>
             <div className="board">
                 {board.map((row, rowIndex) => (
