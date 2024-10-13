@@ -1,8 +1,12 @@
 import React from 'react';
 import './../index.css';
 import Navbar from './../components/NavBar';
+import { useState, useEffect } from 'react';
+import { db } from './../config/firebase.js';
+import { getFirestore, collection, getDocs, addDoc } from "firebase/firestore";
 
 const AddOpenings = () => {
+  
     return (
     <>
       <header className="header">

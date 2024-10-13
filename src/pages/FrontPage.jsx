@@ -4,12 +4,17 @@ import Card from '../components/Card.jsx';  // Ensure this imports your Card com
 import addOpeningLogo from './../assets/treelogo.png';
 import trainOpeningLogo from './../assets/practice.jpg';
 import playBotLogo from './../assets/bot.jpg';
-import { Link } from 'react-router-dom';
-import Connect4 from './../Connect4.jsx'
+import { useState, useEffect } from 'react';
 
 function FrontPage() {
+
+
+
+  
   return (
     <>
+
+
       <header className="header">
         <h1>Connect 4 Opening Website</h1>
       </header>

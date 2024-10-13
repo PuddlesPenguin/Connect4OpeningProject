@@ -2,22 +2,28 @@ import React, { useState, useEffect } from 'react';
 import './../Connect4.css';
 import BasicExample from './../components/DropDown';
 import Navbar from './../components/NavBar';
+import { db } from './../config/firebase.js';
+import { getFirestore, collection, getDocs, addDoc } from "firebase/firestore";
+
 const openingsJSON = `[
     "2123456",
     "232414",
     "4564117",
     "233445",
-    "1231134"
+    "1231134",
+    "111333"
 ]`;
 
 const decodeOpenings = (json) => {
-    const openings = JSON.parse(json);
-    return openings.map((opening) => opening.split('').map(Number));
+    const openingsArray = JSON.parse(json);
+    return openingsArray.map((opening) => opening.split('').map(Number));
 };
 
-const openings = decodeOpenings(openingsJSON);
-const openingIdx = Math.floor(Math.random() * openings.length);
-console.log(openings[openingIdx])
+
+
+const openingsArray = decodeOpenings(openingsJSON);
+const openingIdx = Math.floor(Math.random() * openingsArray.length);
+console.log(openingsArray[openingIdx])
 const ROWS = 6;
 const COLS = 7;
 const EMPTY = 0;
@@ -32,18 +38,48 @@ const TrainOpenings = () => {
     const [gameOver, setGameOver] = useState(false);
     const [moveCounter, setMoveCounter] = useState(0); // Start at 0
     const [jsonArray, setJsonArray] = useState([]);
+    const [newOpeningSeq, setNewOpeningSeq] = useState("");
+    const [newTerminate, setNewTerminate] = useState(false);
+    const [openings, setOpenings] = useState([]);
+    const openingsCollectionRef = collection(db, "openings");
+
+    const createOpening = async () => {
+        try {
+            await addDoc(openingsCollectionRef, {openingSeq: newOpeningSeq, terminate: newTerminate});
+            alert("Opening added successfully!");
+        } catch (error) {
+            console.error("Error adding opening: ", error);
+            alert("Failed to add opening.");
+        }
+    };
+
+    useEffect(() => {
+        const getOpenings = async () => {
+            try {
+                const data = await getDocs(openingsCollectionRef);
+                setOpenings(data.docs.map(doc => ({ id: doc.id, ...doc.data()})));
+            } catch (error) {
+                console.error("Error fetching opening: ", error);
+            }
+        };
+        getOpenings();
+    }, []);
+    
 
     useEffect(() => {
         const playInitialMoves = async () => {
-            if (moveCounter < openings[openingIdx].length) {
+            if (moveCounter < openingsArray[openingIdx].length) {
                 await new Promise(resolve => {
                     setTimeout(() => {
-                        dropPiece(openings[openingIdx][moveCounter] - 1); // Adjust for zero indexing
+                        dropPiece(openingsArray[openingIdx][moveCounter] - 1); // Adjust for zero indexing
                         resolve();
                     }, 1000); // 1000ms delay for each move
                 });
+                setMoveCounter(prevIndex => prevIndex + 1);
+
             }
         };
+        
 
         playInitialMoves();
         console.log(moveCounter);
@@ -101,7 +137,6 @@ const TrainOpenings = () => {
                 const newBoard = board.map(r => [...r]);
                 newBoard[row][col] = currentPlayer;
                 setBoard(newBoard);
-                setMoveCounter(prevCount => prevCount + 1);
                 setJsonArray(prevJsonArray => [...prevJsonArray, col + 1]);
 
                 if (checkWinner(row, col)) {
@@ -127,6 +162,17 @@ const TrainOpenings = () => {
 
     return (
         <>
+    <input 
+        placeholder="Enter opening sequence..."
+        onChange={(e) => setNewOpeningSeq(e.target.value)}
+    />
+    <input 
+        type="button"
+        onClick={() => setNewTerminate(prev => !prev)}
+    />
+    <button onClick={createOpening}>Add Opening</button>
+
+
         <header className="header">
             <h1>Train Openings</h1>
         </header>
