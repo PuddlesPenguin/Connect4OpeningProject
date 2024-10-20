@@ -7,18 +7,22 @@ import { getFirestore, collection, getDocs, addDoc } from "firebase/firestore";
 import Button from '../components/Button.jsx';
 
 const openingsJSON = `[
-    "2123456",
-    "232414",
-    "4564117",
-    "233445",
-    "1231134",
-    "111333"
+    "12345",
+    "23456",
+    "65432",
+    "54321",
+    "34567",
+    "76543"
 ]`;
 
 
 const decodeOpenings = (json) => {
     const openingsArray = JSON.parse(json);
     return openingsArray.map((opening) => opening.split('').map(Number));
+};
+
+const decodeOpening = (openingString) => {
+    return openingString.split('').map(Number);
 };
 
 const arrayToString = (array) => {
@@ -47,15 +51,8 @@ const TrainOpenings = () => {
     const [openings, setOpenings] = useState([]);
     const openingsCollectionRef = collection(db, "openings");
     const [newJSON, setNewJSON] = useState("");
-
-    const createOpening = async () => {
-        try {
-            await addDoc(openingsCollectionRef, {openingSeq: newOpeningSeq, terminate: newTerminate});
-        } catch (error) {
-            console.error("Error adding opening: ", error);
-            alert("Failed to add opening.");
-        }
-    };
+    const [gameCount, setGameCount] = useState(0);
+    const [openingArray, setOpeningArray] = useState([1, 2, 3, 4]);
 
     const BranchToFirebase = async (buttonOpeningSeq, buttonTerminate) => {
         try {
@@ -102,14 +99,22 @@ const TrainOpenings = () => {
             }
         };
         getOpenings();
-    }, []);
+        const validOpenings = openings.filter(opening => opening.terminate === false);
+        console.log(validOpenings);
+        if (validOpenings.length > 0) {
+            const index = Math.floor(Math.random() * validOpenings.length);
+            setOpeningArray(decodeOpening(openings[index].openingSeq));
+        }
+        console.log("Opening Array", openingArray);
+        
+    }, [gameCount]);
     const playInitialMoves = async () => {
         if (x != 1) {
             x = x + 1;
-            if (moveCounter < openingsArray[openingIdx].length) {
+            if (moveCounter < openingArray.length) {
                 await new Promise(resolve => {
                     setTimeout(() => {
-                        dropPiece(openingsArray[openingIdx][moveCounter] - 1);
+                        dropPiece(openingArray[moveCounter] - 1);
                         resolve();
                     }, 1000); // 1000ms delay for each move
                 });
@@ -255,7 +260,7 @@ const TrainOpenings = () => {
 </div>
 <div className="databaseButtons">
     <div className="blueButton">
-        <button className="button" onClick={createOpening}>Branch Openings</button>
+        <button className="button" onClick={branchOpenings}>Branch Openings</button>
     </div>
 </div>
 
