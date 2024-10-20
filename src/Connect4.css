@@ -44,14 +44,13 @@
 }
 
 .connect4 {
-  margin-top: 5%;
+  margin-top: 2%;
+  margin-bottom: 0%;
   background-color: #c6e2e2;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-  font-family: Arial, sans-serif;
+  flex-direction: column; /* Ensure column layout */
+  align-items: center; /* Center items horizontally */
+  height: auto; /* Adjust height to fit content */
 }
 
 h1 {
@@ -122,4 +121,57 @@ h1 {
 
 .reset-button:hover {
   background-color: #3d9970;
+}
+
+.button {
+  background-color: #3498db; /* Blue background */
+  color: white;              /* White text */
+  border-radius: 4px;       /* Rounded corners */
+  padding: 8px 16px;        /* Reduced padding */
+  font-size: 14px;          /* Smaller font size */
+  font-weight: bold;         /* Bold text */
+  transition: background-color 0.3s ease, transform 0.2s; /* Smooth transitions */
+}
+
+.button:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+}
+
+.button:active {
+  transform: scale(0.95); /* Slightly shrink on click */
+}
+
+.button:focus {
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.8); /* Subtle glow */
+}
+
+.button:disabled {
+  background-color: #bdc3c7; /* Gray background */
+  color: #7f8c8d;            /* Darker gray text */
+  cursor: not-allowed;       /* Indicate non-clickable */
+  opacity: 0.7;              /* Slightly transparent */
+}
+
+.databaseButtons {
+  margin-top: 20px;
+  margin-bottom: 0%;
+  padding: 0%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.blueButton .button {
+  color: #fff; 
+  padding: 10px 20px;
+  background: linear-gradient(90deg, #169bd0, #63c5b0);
+  border: none; 
+  border-radius: 5px; 
+  margin: 0px 0px;
+  font-size: 10px;
+  font-weight: 400;
+  text-decoration: none;
 }
